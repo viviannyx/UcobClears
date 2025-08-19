@@ -1,8 +1,8 @@
 {
-  "Author": "Yhumi",
+  "Author": "Yhumi, Edited&Fixed by Vivian",
   "Name": "UCoB Clears",
-  "Punchline": "Show UCoB clears on adventure place.",
-  "Description": "Show UCoB clears on adventure place. /ucobclears for settings.",
+  "Punchline": "Show UCoB clears on adventure plate.",
+  "Description": "Show UCoB clears on adventure plate. /ucobclears for settings.",
   "ApplicableVersion": "any",
   "Tags": [
     "logs",
