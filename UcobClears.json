@@ -6,7 +6,7 @@
        "Description": "Show UCoB clears on adventure plate. /ucobclears for settings.",
         "IsHide": false,
        "InternalName": "UcobClears",
-       "AssemblyVersion": "1.2.6.0",
+       "AssemblyVersion": "1.2.7.0",
         "IsTestingExclusive": false,
        "ApplicableVersion": "any",
        "DalamudApiLevel": 13,
