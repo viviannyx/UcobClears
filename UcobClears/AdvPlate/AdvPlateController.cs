@@ -208,15 +208,7 @@ namespace UcobClears.AdvPlate
 
             try
             {
-                /* var TextOutput = logsStatus.message;
-
-                var textPayload = new Dalamud.Game.Text.SeStringHandling.Payloads.TextPayload(logsStatus.message);
-                var seString = new Dalamud.Game.Text.SeStringHandling.SeString(textPayload);
-
-                FFLogsResponseNode.Text = seString; */
-
                 FFLogsResponseNode.Text = logsStatus.message;
-
             }
             catch (Exception ex)
             {
