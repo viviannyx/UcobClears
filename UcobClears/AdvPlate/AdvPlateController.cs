@@ -179,7 +179,7 @@ namespace UcobClears.AdvPlate
             AtkTextNode* textNode;
             try
             {
-                textNodeParent = charCard->UldManager.SearchNodeById(5)->GetAsAtkComponentNode();
+                textNodeParent = charCard->UldManager.SearchNodeById(6)->GetAsAtkComponentNode();
                 textNode = textNodeParent->GetComponent()->UldManager.SearchNodeById(3)->GetAsAtkTextNode();
             }
             catch (Exception e)
@@ -190,11 +190,11 @@ namespace UcobClears.AdvPlate
 
             FFLogsResponseNode = new TextNode()
             {
-                NodeId = 5,
+                NodeId = 6,
                 TextId = 3,
                 NodeFlags = NodeFlags.Enabled | NodeFlags.Visible,
                 Size = new Vector2(textNodeParent->GetWidth(), textNodeParent->GetHeight()),
-                Position = new Vector2(textNodeParent->GetXFloat(), textNodeParent->GetYFloat() + textNodeParent->GetHeight()),
+                Position = new Vector2(textNodeParent->GetXFloat() + 180, textNodeParent->GetYFloat() + textNodeParent->GetHeight()),
                 TextColor = textNode->TextColor.ToVector4(),
                 TextOutlineColor = textNode->EdgeColor.ToVector4(),
                 BackgroundColor = textNode->BackgroundColor.ToVector4(),
@@ -203,12 +203,13 @@ namespace UcobClears.AdvPlate
                 CharSpacing = textNode->CharSpacing,
                 TextFlags = TextFlags.MultiLine | TextFlags.AutoAdjustNodeSize | (TextFlags)textNode->TextFlags,
                 AlignmentType = AlignmentType.TopRight,
-
+                
             };
 
             try
             {
-                FFLogsResponseNode.Text = logsStatus.message;
+                FFLogsResponseNode.AttachNode(textNodeParent, KamiToolKit.Classes.NodePosition.BeforeTarget);
+                FFLogsResponseNode.String = logsStatus.message;
             }
             catch (Exception ex)
             {
@@ -219,39 +220,7 @@ namespace UcobClears.AdvPlate
 
             Svc.Log.Debug($"Font: {FFLogsResponseNode.FontSize}");
             Svc.Log.Debug($"Attaching to Addon after Target Id: {((AtkResNode*)textNode)->NodeId}");
-            
 
-            P.NativeController.AttachNode(FFLogsResponseNode, (AtkResNode*)textNodeParent, KamiToolKit.Classes.NodePosition.AfterTarget);
-
-            //AtkTextNode* createdTextNode;
-            //try
-            //{
-            //    charCard->UldManager.UpdateDrawNodeList();
-
-            //    Svc.Log.Debug($"Finding NodeId 1000");
-
-            //    int idx1000 = 0;
-            //    for (int i = 0; i < charCard->UldManager.NodeListCount; i++)
-            //    {
-            //        var node = charCard->UldManager.NodeList[i];
-            //        Svc.Log.Debug(node->NodeId.ToString());
-            //        if (node->NodeId == 1000)
-            //            idx1000 = i;
-            //    }
-
-            //    createdTextNode = charCard->UldManager.NodeList[idx1000]->GetAsAtkTextNode();
-
-            //    if (createdTextNode == null)
-            //        Svc.Log.Debug($"Null node.");
-
-            //    Svc.Log.Debug($"Created text node: {createdTextNode->NodeId}. Setting text to {logsStatus.message}");
-            //    createdTextNode->SetText(logsStatus.message);
-            //}
-            //catch (Exception e)
-            //{
-            //    Svc.Log.Debug($"An error has occurred: {e.Message}");
-            //    return;
-            //}
         }
 
         private unsafe void RemoveNodeFromPlate(nint charCardnint)
@@ -264,7 +233,7 @@ namespace UcobClears.AdvPlate
             if (charCard == null)
                 return;
 
-            P.NativeController.DetachNode(FFLogsResponseNode);
+            FFLogsResponseNode.DetachNode();
         }
 
         public unsafe void Refresh(bool ignoreCache = false)

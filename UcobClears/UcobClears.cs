@@ -29,7 +29,6 @@ public unsafe class UcobClears : IDalamudPlugin
     internal PluginUI PluginUi;
     internal Configuration Config;
     internal WindowSystem ws;
-    internal NativeController NativeController;
 
     //internal AdvPlateUI AdvPlateUI;
     internal AdvPlateController AdvPlateController;
@@ -47,8 +46,6 @@ public unsafe class UcobClears : IDalamudPlugin
         P.Config = Configuration.Load();
 
         LuminaData.Init();
-
-        NativeController = new NativeController(pluginInterface);
 
         //AdvPlateUI = new();
         AdvPlateController = new();
@@ -88,8 +85,6 @@ public unsafe class UcobClears : IDalamudPlugin
         Svc.PluginInterface.UiBuilder.OpenConfigUi -= DrawSettingsUI;
         Svc.PluginInterface.UiBuilder.Draw -= ws.Draw;
         Svc.PluginInterface.UiBuilder.OpenMainUi -= DrawSettingsUI;
-
-        GenericHelpers.Safe(NativeController.Dispose);
 
         AdvPlateController.Dispose();
 

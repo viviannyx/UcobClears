@@ -7,6 +7,6 @@
 [submodule "OtterGui"]
 	path = OtterGui
 	url = https://github.com/Ottermandias/OtterGui.git
-[submodule "OtterGui/OtterGuiInternal"]
+[submodule "OtterGuiInternal"]
 	path = OtterGui/OtterGuiInternal
 	url = https://github.com/Ottermandias/OtterGuiInternal.git

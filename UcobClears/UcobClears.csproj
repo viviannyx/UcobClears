@@ -99,6 +99,6 @@
 
     <PropertyGroup>
         <DalamudLibPath>$(appdata)\XIVLauncher\addon\Hooks\dev\</DalamudLibPath>
-        <TargetFramework>net9.0-windows7.0</TargetFramework>
+        <TargetFramework>net10.0-windows7.0</TargetFramework>
     </PropertyGroup>
 </Project>
