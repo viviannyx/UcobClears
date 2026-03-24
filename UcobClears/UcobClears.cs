@@ -47,6 +47,8 @@ public unsafe class UcobClears : IDalamudPlugin
 
         LuminaData.Init();
 
+        KamiToolKitLibrary.Initialize(pluginInterface);
+
         //AdvPlateUI = new();
         AdvPlateController = new();
         ws = new();
@@ -93,6 +95,7 @@ public unsafe class UcobClears : IDalamudPlugin
 
         ECommonsMain.Dispose();
         P = null!;
+        KamiToolKitLibrary.Dispose();
     }
 
     private void OnCommand(string command, string args)
